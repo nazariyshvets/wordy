@@ -1,0 +1,110 @@
+.creation-updating {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 30px;
+}
+
+.creation-updating--title {
+  font-size: 40px;
+  -webkit-text-fill-color: var(--soft-peach);
+  text-shadow: 0 0 2px var(--spun-pearl);
+}
+
+.creation-updating--form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 20px;
+  width: 70%;
+}
+
+.creation-updating--form--record {
+  display: flex;
+  column-gap: 20px;
+  width: 100%;
+}
+
+.creation-updating--form--input {
+  width: 100%;
+  -webkit-text-fill-color: var(--soft-peach);
+  caret-color: var(--soft-peach);
+  background-color: transparent;
+  border-bottom: 2px solid var(--soft-peach);
+  padding-inline: 10px;
+}
+
+.creation-updating--form--input:focus {
+  border-bottom: 2px solid var(--blaze-orange);
+}
+
+.creation-updating--form--input.title {
+  font-size: 26px;
+  font-weight: 700;
+  font-style: italic;
+  width: 50%;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.creation-updating--form--remove {
+  font-size: 20px;
+  -webkit-text-fill-color: var(--soft-peach);
+  cursor: pointer;
+  user-select: none;
+}
+
+.creation-updating--form--remove:hover {
+  -webkit-text-fill-color: var(--blaze-orange);
+}
+
+.creation-updating--form--add {
+  fill: var(--soft-peach);
+  height: 26px;
+  border-radius: 100px;
+  align-self: flex-end;
+  cursor: pointer;
+  user-select: none;
+}
+
+@media screen and (max-width: 1024px) {
+  .creation-updating--form {
+    width: 90%;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .creation-updating--title {
+    font-size: 34px;
+  }
+
+  .creation-updating--form {
+    width: 100%;
+  }
+
+  .creation-updating--form--input.title {
+    font-size: 20px;
+  }
+
+  .creation-updating--form--add {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .creation-updating--title {
+    font-size: 26px;
+  }
+
+  .creation-updating--form--record {
+    column-gap: 10px;
+  }
+
+  .creation-updating--form--remove {
+    font-size: 16px;
+  }
+
+  .creation-updating--form--add {
+    font-size: 14px;
+  }
+}

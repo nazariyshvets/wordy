@@ -1,0 +1,84 @@
+:root {
+  --black: #010101;
+  --studio: #5f43b2;
+  --soft-peach: #fefdfd;
+  --spun-pearl: #b1aebb;
+  --scarlet-gum: #44195e;
+  --blaze-orange: #fc6601;
+  --boulder: #767676;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--spun-pearl);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--studio);
+  border-radius: 100px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--scarlet-gum);
+}
+
+* {
+  font-family: "Roboto", Arial, sans-serif;
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  text-decoration: none;
+  transition: color 0.2s, background-color 0.2s, border-radius 0.2s,
+    text-decoration 0.2s, box-shadow 0.2s, letter-spacing 0.2s;
+}
+
+*::placeholder {
+  -webkit-text-fill-color: var(--boulder);
+}
+
+form input {
+  font-size: 20px;
+  -webkit-text-fill-color: var(--black);
+  border: none;
+  outline: none;
+}
+
+.form--button {
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-text-fill-color: var(--blaze-orange);
+  background-color: var(--soft-peach);
+  border: none;
+  border-top-left-radius: 100px;
+  border-bottom-right-radius: 100px;
+  padding: 6px 50px;
+  cursor: pointer;
+}
+
+.form--button:hover {
+  -webkit-text-fill-color: var(--soft-peach);
+  background-color: var(--blaze-orange);
+}
+
+#root {
+  min-height: 100vh;
+  -webkit-text-fill-color: var(--black);
+  background: radial-gradient(rebeccapurple, var(--scarlet-gum), var(--black));
+}
+
+@media screen and (max-width: 768px) {
+  form input,
+  .form--button {
+    font-size: 16px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  form input,
+  .form--button {
+    font-size: 14px;
+  }
+}

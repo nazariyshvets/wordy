@@ -1,0 +1,78 @@
+.login,
+.registration {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.registration--title,
+.login--title {
+  font-size: 40px;
+  -webkit-text-fill-color: var(--soft-peach);
+}
+
+.registration--form,
+.login--form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 10px;
+  width: 400px;
+  margin-top: 20px;
+}
+
+.registration--form--input,
+.login--form--input {
+  border-bottom-left-radius: 100px;
+  border-top-right-radius: 100px;
+  padding: 6px 30px;
+}
+
+.registration--form--input:focus,
+.login--form--input:focus {
+  outline: 3px solid var(--blaze-orange);
+}
+
+.registration--login,
+.login--registration {
+  font-size: 16px;
+  -webkit-text-fill-color: var(--soft-peach);
+  margin-top: 5px;
+  text-align: center;
+}
+
+.registration--login--link,
+.login--registration--link {
+  font-weight: 700;
+  -webkit-text-fill-color: var(--blaze-orange);
+}
+
+.registration--login--link:hover,
+.login--registration--link:hover {
+  text-decoration: underline;
+}
+
+@media screen and (max-width: 768px) {
+  .registration--login,
+  .login--registration {
+    font-size: 14px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .registration--title,
+  .login--title {
+    font-size: 32px;
+  }
+
+  .registration--form,
+  .login--form {
+    width: 290px;
+  }
+
+  .registration--login,
+  .login--registration {
+    font-size: 12px;
+  }
+}

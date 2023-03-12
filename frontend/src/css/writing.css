@@ -1,0 +1,30 @@
+.writing--definition {
+  font-size: 30px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  hyphens: auto;
+}
+
+@media screen and (max-width: 1024px) {
+  .writing--definition {
+    font-size: 28px;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .writing--definition {
+    font-size: 24px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .writing--definition {
+    font-size: 20px;
+  }
+}

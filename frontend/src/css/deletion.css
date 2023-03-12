@@ -1,0 +1,64 @@
+.deletion {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 30px;
+  padding: 100px;
+}
+
+.deletion--title {
+  -webkit-text-fill-color: var(--soft-peach);
+  text-align: center;
+}
+
+.deletion--buttons {
+  display: flex;
+  column-gap: 30px;
+}
+
+.deletion--buttons--cancel,
+.deletion--buttons--delete {
+  font-size: 20px;
+  font-weight: 700;
+  -webkit-text-fill-color: var(--soft-peach);
+  background-color: transparent;
+  border: 2px solid var(--soft-peach);
+  border-radius: 5px;
+  padding: 6px 20px;
+  cursor: pointer;
+}
+
+.deletion--buttons--cancel:hover {
+  box-shadow: 0 0 10px var(--soft-peach);
+}
+
+.deletion--buttons--delete {
+  -webkit-text-fill-color: var(--blaze-orange);
+  border: 2px solid var(--blaze-orange);
+}
+
+.deletion--buttons--delete:hover {
+  box-shadow: 0 0 10px var(--blaze-orange);
+}
+
+@media screen and (max-width: 768px) {
+  .deletion {
+    padding: 100px 40px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .deletion--title {
+    font-size: 26px;
+  }
+
+  .deletion--buttons {
+    column-gap: 10px;
+  }
+
+  .deletion--buttons--cancel,
+  .deletion--buttons--delete {
+    font-size: 16px;
+  }
+}
