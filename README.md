@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="https://postimg.cc/Rqsdm7ZL">
+  <img src="https://i.postimg.cc/02xBpZgF/logo.png">
 </p>
 
 # Wordy
