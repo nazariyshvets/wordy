@@ -6,7 +6,7 @@ import {
 } from "react-router-dom";
 import { AuthProvider } from "../context/AuthContext";
 import modesData, { MODES } from "../utils/modesData";
-import "./css/general.css";
+import "../css/general.css";
 import Welcome from "./Welcome";
 import Registration from "./Registration";
 import Login from "./Login";

@@ -1,12 +1,2 @@
+backend/env/
 frontend/node_modules/
-activate
-activate.bat
-Activate.ps1
-deactivate.bat
-django-admin.exe
-pip.exe
-pip3.9.exe
-pip3.exe
-python.exe
-pythonw.exe
-sqlformat.exe
