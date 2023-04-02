@@ -91,7 +91,7 @@ export default function Listening(props) {
           <div className="listening--play-wrapper">
             <img
               className="listening--play"
-              src="/media/listen.svg"
+              src="/images/listen.svg"
               alt="listen"
               draggable={false}
               onClick={() =>

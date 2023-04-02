@@ -132,6 +132,12 @@ def profile_image(request):
 @permission_classes([IsAuthenticated])
 @parser_classes([MultiPartParser, FormParser])
 def update_profile_image(request):
+  image = request.FILES.get("url")
+  
+  if not image: return Response({}, status=status.HTTP_400_BAD_REQUEST)
+  if image.size > 1024 * 100:
+    return Response("Image size should be up to 100KB", status=status.HTTP_400_BAD_REQUEST)
+
   profile_image = ProfileImage.objects.get(user=request.user)
   serializer = ProfileImageSerializer(profile_image, data=request.data)
   if serializer.is_valid():

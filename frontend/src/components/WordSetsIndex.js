@@ -56,7 +56,7 @@ export default function WordSets() {
           draggable={false}>
           <img
             className="word-sets--create--img"
-            src="/media/plus.svg"
+            src="/images/plus.svg"
             alt="add new set"
             draggable={false}
           />

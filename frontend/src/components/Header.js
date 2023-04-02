@@ -34,7 +34,7 @@ export default function Header() {
       <div className="header--profile">
         <img
           className="header--profile--img"
-          src={profileImageUrl || "/media/default.svg"}
+          src={profileImageUrl || "/images/default.svg"}
           alt="profile"
           draggable={false}
         />
