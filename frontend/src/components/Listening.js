@@ -60,7 +60,7 @@ export default function Listening(props) {
     api
       .get(`/voice?browser=${browser}`)
       .then((response) => setVoiceURI(response.data.uri))
-      .catch((error) => {});
+      .catch((error) => console.error(error));
   }, [setCurrentModeId, props.mode]);
 
   useEffect(() => {
@@ -108,12 +108,14 @@ export default function Listening(props) {
             className="listening--form"
             autoComplete="off"
             title=""
-            onSubmit={checkAnswer}>
+            onSubmit={checkAnswer}
+          >
             <CSSTransition
               nodeRef={inputNodeRef}
               in={inProp}
               timeout={1000}
-              classNames="listening--form--input">
+              classNames="listening--form--input"
+            >
               <input
                 className="listening--form--input"
                 placeholder="Type your answer here"
