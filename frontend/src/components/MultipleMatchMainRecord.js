@@ -24,7 +24,8 @@ export default function MultipleMatchMainRecord({
       <div
         className={`multiple-match-main-record--definition 
         ${definition ? "filled" : ""} ${isDragging ? "dragging" : ""}`}
-        ref={dragDropRef}>
+        ref={dragDropRef}
+      >
         {definition}
       </div>
     </div>

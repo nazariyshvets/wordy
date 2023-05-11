@@ -2,6 +2,7 @@ import React, { useState, useEffect, useCallback } from "react";
 import { useOutletContext } from "react-router-dom";
 import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
+import { TouchBackend, isTouchDevice } from "react-dnd-touch-backend";
 import "../css/multipleMatch.css";
 import TopbarRecord from "./MultipleMatchTopbarRecord";
 import MainRecord from "./MultipleMatchMainRecord";
@@ -137,6 +138,8 @@ export default function MultipleMatch(props) {
     />
   ));
 
+  const backend = "ontouchstart" in window ? TouchBackend : HTML5Backend;
+
   return (
     <div className="multiple-match">
       {isEnd ? (
@@ -150,7 +153,7 @@ export default function MultipleMatch(props) {
         </>
       ) : (
         <>
-          <DndProvider backend={HTML5Backend}>
+          <DndProvider backend={backend}>
             <div className="multiple-match--topbar" translate="no">
               {topbarRecordWidgets}
             </div>
@@ -163,7 +166,8 @@ export default function MultipleMatch(props) {
             onClick={() => {
               setResult(correctAnswersQuantity());
               setIsEnd(true);
-            }}>
+            }}
+          >
             Check result
           </button>
         </>

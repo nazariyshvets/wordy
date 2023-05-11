@@ -11,7 +11,8 @@ export default function MultipleMatchTopbarRecord({
   return (
     <div
       className={`multiple-match-topbar-record ${isDragging ? "dragging" : ""}`}
-      ref={dragRef}>
+      ref={dragRef}
+    >
       {definition}
     </div>
   );

@@ -140,7 +140,7 @@ export default function CreationUpdating(props) {
         {recordWidgets}
         <img
           className="creation-updating--form--add"
-          src="/media/plus.svg"
+          src="/images/plus.svg"
           alt="add new record"
           draggable={false}
           onClick={addRecord}

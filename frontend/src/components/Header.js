@@ -27,14 +27,15 @@ export default function Header() {
         className="header--title"
         to="/word-sets"
         draggable={false}
-        translate="no">
+        translate="no"
+      >
         Wordy
       </Link>
 
       <div className="header--profile">
         <img
           className="header--profile--img"
-          src={profileImageUrl || "/images/default.svg"}
+          src={profileImageUrl}
           alt="profile"
           draggable={false}
         />
@@ -44,21 +45,24 @@ export default function Header() {
             setOptionsAreVisible(
               (prevOptionsAreVisible) => !prevOptionsAreVisible
             )
-          }></div>
+          }
+        ></div>
         {optionsAreVisible && (
           <ul className="header--profile--options">
             <li
               onClick={() => {
                 setImageUploadingIsVisible(true);
                 setOptionsAreVisible(false);
-              }}>
+              }}
+            >
               Upload image
             </li>
             <li
               onClick={() => {
                 setVoiceSelectionIsVisible(true);
                 setOptionsAreVisible(false);
-              }}>
+              }}
+            >
               Set voice
             </li>
             <li onClick={logoutUser}>Logout</li>

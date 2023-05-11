@@ -64,7 +64,7 @@ form input {
 }
 
 #root {
-  min-height: 100vh;
+  min-height: 100dvh;
   -webkit-text-fill-color: var(--black);
   background: radial-gradient(rebeccapurple, var(--scarlet-gum), var(--black));
 }

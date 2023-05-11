@@ -71,6 +71,11 @@ header {
 @media screen and (max-width: 480px) {
   header {
     padding-inline: 20px;
+    height: 50px;
+  }
+
+  .header--title {
+    font-size: 24px;
   }
 
   .header--profile--options {

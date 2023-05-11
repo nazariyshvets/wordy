@@ -34,7 +34,7 @@ export default function ImageUploading(props) {
         props.setProfileImageUrl(response.data.url);
         props.close();
       })
-      .catch((error) => alert("Something went wrong!"));
+      .catch((error) => alert(error.response.data));
   };
 
   return (
@@ -52,7 +52,8 @@ export default function ImageUploading(props) {
           onClick={() => {
             setProfileImage(null);
             props.close();
-          }}>
+          }}
+        >
           &#10005;
         </div>
       </form>

@@ -17,8 +17,7 @@ export default function VoiceSelection(props) {
       .put("/update-voice/", { browser, uri })
       .then((response) => {
         alert("Voice has beeen updated successfully!");
-        setDefaultVoiceURI(response.data.uri);
-        props.close();
+        window.location.reload();
       })
       .catch((error) => alert("Something went wrong!"));
   };
@@ -38,7 +37,8 @@ export default function VoiceSelection(props) {
         <select
           className="voice-selection--container--select"
           onChange={handleVoiceSelectChange}
-          value={defaultVoiceURI}>
+          value={defaultVoiceURI}
+        >
           {voices.map((voice) => (
             <option key={voice.voiceURI} value={voice.voiceURI}>
               {`${voice.lang} - ${voice.name}`}
@@ -48,7 +48,8 @@ export default function VoiceSelection(props) {
 
         <div
           className="voice-selection--container--close"
-          onClick={props.close}>
+          onClick={props.close}
+        >
           &#10005;
         </div>
       </div>

@@ -38,7 +38,8 @@ export default function WordSet() {
       className={mode.id === currentModeId ? "selected" : ""}
       to={`/word-sets/${wordSetId}/${mode.id}`}
       key={mode.id}
-      draggable={false}>
+      draggable={false}
+    >
       {mode.title}
     </Link>
   ));
@@ -46,17 +47,15 @@ export default function WordSet() {
   return (
     <div className="word-set">
       {confettiAreEnabled && (
-        <ReactConfetti
-          width={window.innerWidth - 61}
-          height={window.innerHeight - 91}
-        />
+        <div className="word-set--confetti-wrapper">
+          <ReactConfetti />
+        </div>
       )}
 
       <div
         className={`word-set--hamburger-menu ${menuIsActive ? "active" : ""}`}
-        onClick={() =>
-          setMenuIsActive((prevMenuIsActive) => !prevMenuIsActive)
-        }>
+        onClick={() => setMenuIsActive((prevMenuIsActive) => !prevMenuIsActive)}
+      >
         <span></span>
         <span></span>
         <span></span>
@@ -67,13 +66,15 @@ export default function WordSet() {
         <Link
           className="word-set--sidebar--update"
           to={`/word-sets/${wordSetId}/update`}
-          draggable={false}>
+          draggable={false}
+        >
           Update word set
         </Link>
         <Link
           className="word-set--sidebar--delete"
           to={`/word-sets/${wordSetId}/delete`}
-          draggable={false}>
+          draggable={false}
+        >
           Delete word set
         </Link>
       </section>

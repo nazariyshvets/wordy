@@ -1,2 +1,6 @@
 backend/venv/
 frontend/node_modules/
+frontend/build/
+frontend/.firebaserc
+frontend/database.rules.json
+frontend/firebase.json
