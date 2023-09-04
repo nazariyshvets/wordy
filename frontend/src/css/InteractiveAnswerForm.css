@@ -1,0 +1,56 @@
+.interactive-answer-form {
+  position: relative;
+  width: 80%;
+}
+
+.interactive-answer-form--input {
+  width: 100%;
+  padding-inline: 1rem 4rem;
+  border-bottom: 2px solid var(--black);
+  background-color: transparent;
+  text-align: center;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.interactive-answer-form--input:focus {
+  border-bottom: 2px solid var(--blaze-orange);
+}
+
+.interactive-answer-form--input-enter,
+.interactive-answer-form--input-exit {
+  text-decoration: none;
+}
+
+.interactive-answer-form--input-enter-active,
+.interactive-answer-form--input-exit-active {
+  text-decoration: line-through;
+  transition: text-decoration 1000ms;
+}
+
+.interactive-answer-form--send {
+  position: absolute;
+  top: -0.7rem;
+  right: 0.7rem;
+  border: none;
+  background-color: transparent;
+  cursor: pointer;
+  user-select: none;
+}
+
+.interactive-answer-form--send .fa {
+  font-size: 2rem;
+  -webkit-text-fill-color: var(--black);
+  color: var(--black);
+}
+
+.interactive-answer-form--send .fa:hover {
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+}
+
+@media screen and (max-width: 768px) {
+  .interactive-answer-form {
+    width: 100%;
+  }
+}

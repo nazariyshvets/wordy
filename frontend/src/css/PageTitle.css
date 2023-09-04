@@ -1,0 +1,6 @@
+.page-title {
+  font-size: 2rem;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-align: center;
+}

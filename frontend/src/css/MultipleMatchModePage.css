@@ -1,0 +1,104 @@
+.multiple-match-mode-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+  padding: 2rem;
+  border-radius: 1rem;
+  background-color: var(--soft-peach);
+}
+
+.multiple-match-mode-page--topbar {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.7rem;
+  width: 100%;
+}
+
+.topbar-record,
+.main-record--term,
+.main-record--definition {
+  padding: 0.3rem 0.7rem;
+  border: 2px solid var(--blaze-orange);
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.topbar-record {
+  cursor: grab;
+}
+
+.topbar-record:active,
+.main-record--definition.filled:active {
+  cursor: grabbing;
+}
+
+.topbar-record.dragging,
+.main-record--definition.filled.dragging {
+  opacity: 0.5;
+}
+
+.multiple-match-mode-page--main {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7rem;
+  width: 100%;
+}
+
+.main-record {
+  display: flex;
+  justify-content: space-between;
+}
+
+.main-record--term,
+.main-record--definition {
+  width: 49%;
+}
+
+.main-record--definition {
+  border: 2px dashed var(--blaze-orange);
+}
+
+.main-record--definition.filled {
+  border: 2px solid var(--blaze-orange);
+  cursor: grab;
+}
+
+.multiple-match-mode-page--check-result {
+  padding: 0.3rem 1.2rem;
+  border: 2px solid var(--soft-peach);
+  border-radius: 10rem;
+  background-color: var(--blaze-orange);
+  font-size: 1.2rem;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  cursor: pointer;
+}
+
+.multiple-match-mode-page--check-result:hover {
+  letter-spacing: 0.2rem;
+}
+
+.multiple-match-mode-page--result {
+  font-size: 2rem;
+  text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .multiple-match-mode-page--topbar {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .multiple-match-mode-page--topbar {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

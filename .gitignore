@@ -1,6 +1,7 @@
+.vscode
 backend/venv/
-frontend/node_modules/
+backend/backend/.env
+frontend/.firebase
 frontend/build/
+frontend/node_modules/
 frontend/.firebaserc
-frontend/database.rules.json
-frontend/firebase.json

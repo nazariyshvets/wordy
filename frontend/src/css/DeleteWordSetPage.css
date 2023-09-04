@@ -1,0 +1,40 @@
+.delete-word-set-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 2rem;
+  padding: 2rem;
+}
+
+.delete-word-set-page--buttons {
+  display: flex;
+  column-gap: 2rem;
+}
+
+.delete-word-set-page--cancel,
+.delete-word-set-page--delete {
+  padding: 0.4rem 1.2rem;
+  border: 2px solid var(--soft-peach);
+  border-radius: 0.5rem;
+  background-color: transparent;
+  font-size: 1.2rem;
+  font-weight: 700;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  cursor: pointer;
+}
+
+.delete-word-set-page--cancel:hover {
+  box-shadow: 0 0 0.7rem var(--soft-peach);
+}
+
+.delete-word-set-page--delete {
+  border: 2px solid var(--blaze-orange);
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+}
+
+.delete-word-set-page--delete:hover {
+  box-shadow: 0 0 0.7rem var(--blaze-orange);
+}

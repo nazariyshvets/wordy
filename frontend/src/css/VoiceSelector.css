@@ -1,0 +1,43 @@
+.voice-selector {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.7);
+}
+
+.voice-selector--container {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 4rem;
+  border-radius: 2rem;
+  background-color: var(--soft-peach);
+}
+
+.voice-selector--container--close {
+  position: absolute;
+  top: 1rem;
+  right: 2rem;
+  font-size: 1.5rem;
+  -webkit-text-fill-color: var(--studio);
+  color: var(--studio);
+  cursor: pointer;
+}
+
+.voice-selector--container--close:hover {
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+}
+
+.voice-selector--container--select {
+  border: none;
+  outline: 2px solid var(--black);
+}

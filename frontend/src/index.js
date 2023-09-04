@@ -1,18 +1,23 @@
+import { StrictMode } from "react";
 import ReactDOM from "react-dom/client";
+import { positions, transitions, Provider as AlertProvider } from "react-alert";
 import App from "./components/App";
-import { initializeApp } from "firebase/app";
+import AlertTemplate from "./components/AlertTemplate";
+import "./firebaseConfig";
+import "./css/general.css";
 
-const firebaseConfig = {
-  apiKey: "apiKey",
-  authDomain: "authDomain",
-  projectId: "projectId",
-  storageBucket: "storageBucket",
-  messagingSenderId: "messagingSenderId",
-  appId: "appId",
-  measurementId: "measurementId",
+const alertOptions = {
+  offset: "10px",
+  position: positions.TOP_CENTER,
+  timeout: 5000,
+  transition: transitions.SCALE,
 };
 
-const app = initializeApp(firebaseConfig);
-
 const root = ReactDOM.createRoot(document.getElementById("root"));
-root.render(<App />);
+root.render(
+  <StrictMode>
+    <AlertProvider template={AlertTemplate} {...alertOptions}>
+      <App />
+    </AlertProvider>
+  </StrictMode>
+);

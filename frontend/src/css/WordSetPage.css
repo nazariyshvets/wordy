@@ -1,0 +1,113 @@
+.word-set-page {
+  position: relative;
+  display: flex;
+  column-gap: 2rem;
+  padding-block: 2.5rem;
+}
+
+.word-set-page--confetti-wrapper {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  pointer-events: none;
+}
+
+.word-set-page--loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.word-set-page--menu-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.word-set-page--sidebar {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7rem;
+  width: 20%;
+  overflow: hidden;
+}
+
+.word-set-page--sidebar--modes {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7rem;
+  margin-bottom: 0.7rem;
+  padding-bottom: 1.4rem;
+  border-bottom: 2px solid var(--boulder);
+}
+
+.word-set-page--sidebar--modes > a,
+.word-set-page--sidebar--update,
+.word-set-page--sidebar--delete {
+  padding: 0.4rem 1.2rem;
+  border: 2px solid var(--soft-peach);
+  border-radius: 10rem;
+  font-size: 1.2rem;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.word-set-page--sidebar--modes > a.selected {
+  background-color: var(--studio);
+  font-style: italic;
+  cursor: default;
+}
+
+.word-set-page--sidebar--modes > a:hover,
+.word-set-page--sidebar--update:hover,
+.word-set-page--sidebar--delete:hover {
+  border: 2px solid var(--blaze-orange);
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+}
+
+.word-set-page--sidebar--modes > a.selected:hover {
+  border: 2px solid var(--soft-peach);
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+}
+
+.word-set-page--main {
+  width: 80%;
+}
+
+@media screen and (max-width: 1024px) {
+  .word-set-page--sidebar {
+    position: absolute;
+    top: 2.5rem;
+    left: 0;
+    width: 0;
+    padding-block: 2rem;
+    background-color: var(--black);
+    transition: width 2s, padding-inline 2s;
+    z-index: 50;
+  }
+
+  .word-set-page--sidebar.active {
+    width: 100%;
+    padding-inline: 4rem;
+  }
+
+  .word-set-page--main {
+    width: 100%;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .word-set-page--sidebar.active {
+    padding-inline: 1rem;
+  }
+}

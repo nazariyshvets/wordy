@@ -1,0 +1,107 @@
+.home-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.home-page--search-input {
+  align-self: center;
+  width: 60%;
+  padding: 0.3rem 2rem;
+  border-bottom-left-radius: 10rem;
+  border-top-right-radius: 10rem;
+}
+
+.home-page--title-wrapper {
+  position: relative;
+  margin-block: 1.2rem;
+}
+
+.home-page--loading-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.create-word-set-link {
+  position: absolute;
+  top: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 10rem;
+  box-shadow: 0 0 0.3rem var(--blaze-orange);
+  user-select: none;
+}
+
+.create-word-set-link:hover {
+  box-shadow: 0 0 1rem var(--blaze-orange);
+}
+
+.create-word-set-link--img {
+  height: 70%;
+}
+
+.home-page--no-word-sets,
+.home-page--no-word-sets-with-provided-title {
+  align-self: center;
+  font-size: 1.5rem;
+  font-style: italic;
+  -webkit-text-fill-color: var(--spun-pearl);
+  color: var(--spun-pearl);
+  text-align: center;
+}
+
+.home-page--word-set-links {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.home-page--word-set-link {
+  padding: 0.7rem;
+  box-shadow: inset 0 0 0.7rem var(--soft-peach);
+  font-size: 1.2rem;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-align: center;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.home-page--word-set-link:hover {
+  box-shadow: inset 0 0 0.7rem var(--blaze-orange);
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+}
+
+@media screen and (max-width: 1024px) {
+  .home-page--word-set-links {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .home-page--search-input {
+    width: 80%;
+  }
+
+  .home-page--word-set-links {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .page-title {
+    text-align: left;
+  }
+
+  .home-page--word-set-links {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}

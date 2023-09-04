@@ -1,0 +1,11 @@
+.skip {
+  align-self: flex-end;
+  font-weight: 500;
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+  cursor: pointer;
+}
+
+.skip:hover {
+  text-decoration: underline;
+}

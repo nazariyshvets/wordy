@@ -1,0 +1,70 @@
+.welcome-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  row-gap: 1rem;
+  min-height: 100vh;
+  padding-block: 2rem 6rem;
+  padding-inline: 0.7rem;
+}
+
+.welcome-page--title {
+  font-size: 3rem;
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+  text-shadow: 0 0 2px var(--soft-peach);
+  text-align: center;
+}
+
+.welcome-page--desc {
+  font-size: 1.2rem;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-align: center;
+}
+
+.welcome-page--desc--brand {
+  font-weight: 700;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-shadow: 0 0 0.3rem var(--blaze-orange);
+  letter-spacing: 0.1rem;
+}
+
+.welcome-page--links {
+  display: flex;
+  column-gap: 1.2rem;
+  margin-top: 2rem;
+}
+
+.welcome-page--links--login,
+.welcome-page--links--signup {
+  padding: 0.3rem 1.2rem;
+  border: 0.2rem solid var(--blaze-orange);
+  border-radius: 0.3rem;
+  background-color: var(--soft-peach);
+  font-size: 1.2rem;
+  font-weight: 700;
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+  text-align: center;
+}
+
+.welcome-page--links--login:hover {
+  border-top-left-radius: 10rem;
+  border-bottom-right-radius: 10rem;
+}
+
+.welcome-page--links--signup {
+  border: 0.2rem solid var(--soft-peach);
+  background-color: var(--blaze-orange);
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+}
+
+.welcome-page--links--signup:hover {
+  border-top-right-radius: 10rem;
+  border-bottom-left-radius: 10rem;
+}

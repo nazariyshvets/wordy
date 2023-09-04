@@ -1,0 +1,31 @@
+.folded-button {
+  position: relative;
+  padding: 0.5rem 3rem;
+  border: none;
+  border-radius: 0.7rem;
+  background-color: var(--studio);
+  font-size: 1.5rem;
+  font-weight: 700;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-transform: capitalize;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.folded-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-width: 0;
+  border-style: solid;
+  border-color: var(--soft-peach) rgba(255, 255, 255, 0.5)
+    rgba(255, 255, 255, 0.5) var(--soft-peach);
+  border-bottom-right-radius: 0.7rem;
+  transition: border-width 0.4s;
+}
+
+.folded-button:hover::before {
+  border-width: 0.8rem;
+}

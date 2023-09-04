@@ -1,4 +1,4 @@
-const detectBrowser = () => {
+function detectBrowser() {
   const userAgent = navigator.userAgent;
   let browser;
 
@@ -15,6 +15,6 @@ const detectBrowser = () => {
   }
 
   return browser;
-};
+}
 
 export default detectBrowser;

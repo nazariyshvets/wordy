@@ -1,0 +1,51 @@
+.login-page,
+.registration-page {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  padding-block: 2rem 6rem;
+}
+
+.login-page--form,
+.registration-page--form {
+  display: flex;
+  flex-direction: column;
+  row-gap: 0.7rem;
+  width: 25rem;
+  margin-top: 1.2rem;
+}
+
+.login-page--form--input,
+.registration-page--form--input {
+  padding: 0.3rem 2rem;
+  border-bottom-left-radius: 10rem;
+  border-top-right-radius: 10rem;
+}
+
+.login-page--form--input:focus,
+.registration-page--form--input:focus {
+  outline: 0.2rem solid var(--blaze-orange);
+}
+
+.login-page--registration,
+.registration-page--login {
+  margin-top: 0.7rem;
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-align: center;
+}
+
+.login-page--registration--link,
+.registration-page--login--link {
+  font-weight: 700;
+  -webkit-text-fill-color: var(--blaze-orange);
+  color: var(--blaze-orange);
+}
+
+.login-page--registration--link:hover,
+.registration-page--login--link:hover {
+  text-decoration: underline;
+}

@@ -1,0 +1,19 @@
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  column-gap: 1rem;
+  height: 4rem;
+  padding-inline: 1rem;
+  box-shadow: 0 0 3px var(--soft-peach);
+}
+
+.footer--copy {
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
+  text-align: center;
+}

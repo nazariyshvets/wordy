@@ -1,0 +1,14 @@
+.flashcards-mode-page {
+  display: flex;
+  flex-direction: column;
+  row-gap: 1rem;
+}
+
+.flashcards-mode-page--cards {
+  display: flex;
+  /* has to be 40px to coordinate with script */
+  column-gap: 40px;
+  height: 25rem;
+  overflow: hidden;
+  scroll-behavior: smooth;
+}

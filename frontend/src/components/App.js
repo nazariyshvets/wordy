@@ -1,80 +1,65 @@
-import {
-  createBrowserRouter,
-  createRoutesFromElements,
-  Route,
-  RouterProvider,
-} from "react-router-dom";
-import { AuthProvider } from "../context/AuthContext";
-import modesData, { MODES } from "../utils/modesData";
-import "../css/general.css";
-import Welcome from "./Welcome";
-import Registration from "./Registration";
-import Login from "./Login";
-import Main from "./Main";
-import WordSetsIndex from "./WordSetsIndex";
-import CreationUpdating from "./CreationUpdating";
-import WordSet from "./WordSet";
-import DefaultFlashcards from "./DefaultFlashcards";
-import Deletion from "./Deletion";
-import PrivateRoute from "./PrivateRoute";
+import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
+import { AuthProvider } from "../contexts/AuthContext";
+import { TrProvider } from "../contexts/TrContext";
+import MODES from "../constants/MODES";
+import WelcomePage from "../pages/WelcomePage";
+import RegistrationPage from "../pages/RegistrationPage";
+import LoginPage from "../pages/LoginPage";
+import MainPage from "../pages/MainPage";
+import HomePage from "../pages/HomePage";
+import CreateUpdateWordSetPage from "../pages/CreateUpdateWordSetPage";
+import WordSetPage from "../pages/WordSetPage";
+import DefaultModePage from "../pages/DefaultModePage";
+import DeleteWordSetPage from "../pages/DeleteWordSetPage";
+import PrivatePage from "../pages/PrivatePage";
 
-export default function App() {
-  const router = createBrowserRouter(
-    createRoutesFromElements(
-      <>
-        <Route
-          path="/"
-          element={
-            <AuthProvider>
-              <Welcome />
-            </AuthProvider>
-          }
-        />
-        <Route
-          path="/registration"
-          element={
-            <AuthProvider>
-              <Registration />
-            </AuthProvider>
-          }
-        />
-        <Route
-          path="/login"
-          element={
-            <AuthProvider>
-              <Login />
-            </AuthProvider>
-          }
-        />
-        <Route
-          path="/word-sets"
-          element={
-            <AuthProvider>
-              <PrivateRoute>
-                <Main />
-              </PrivateRoute>
-            </AuthProvider>
-          }>
-          <Route index element={<WordSetsIndex />} />
-          <Route
-            path="create"
-            element={<CreationUpdating mode={MODES.CREATION} />}
-          />
-          <Route path=":wordSetId" element={<WordSet />}>
-            <Route index element={<DefaultFlashcards />} />
-            {modesData.map((mode) => (
-              <Route path={`${mode.id}`} element={mode.element} key={mode.id} />
-            ))}
-          </Route>
-          <Route
-            path=":wordSetId/update"
-            element={<CreationUpdating mode={MODES.UPDATING} />}
-          />
-          <Route path=":wordSetId/delete" element={<Deletion />} />
-        </Route>
-      </>
-    )
+function App() {
+  return (
+    <BrowserRouter>
+      <TrProvider>
+        <AuthProvider>
+          <Routes>
+            <Route path="/" element={<WelcomePage />} />
+            <Route path="/registration" element={<RegistrationPage />} />
+            <Route path="/login" element={<LoginPage />} />
+            <Route
+              path="/word-sets"
+              element={
+                <PrivatePage>
+                  <MainPage />
+                </PrivatePage>
+              }
+            >
+              <Route index element={<HomePage />} />
+              <Route
+                path="create"
+                element={<CreateUpdateWordSetPage isCreating={true} />}
+              />
+              <Route path=":wordSetId" element={<WordSetPage />}>
+                <Route index element={<DefaultModePage />} />
+                {MODES.map((mode) => (
+                  <Route
+                    path={`${mode.id}`}
+                    element={mode.element}
+                    key={mode.id}
+                  />
+                ))}
+              </Route>
+              <Route
+                path=":wordSetId/update"
+                element={<CreateUpdateWordSetPage isCreating={false} />}
+              />
+              <Route path=":wordSetId/delete" element={<DeleteWordSetPage />} />
+            </Route>
+            <Route
+              path="*"
+              element={<Navigate to="/word-sets" replace={true} />}
+            />
+          </Routes>
+        </AuthProvider>
+      </TrProvider>
+    </BrowserRouter>
   );
-
-  return <RouterProvider router={router} />;
 }
+
+export default App;
