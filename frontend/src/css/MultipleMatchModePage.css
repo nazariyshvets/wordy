@@ -20,11 +20,11 @@
 .main-record--term,
 .main-record--definition {
   padding: 0.3rem 0.7rem;
-  border: 2px solid var(--blaze-orange);
+  border: 2px solid var(--studio);
   border-radius: 10rem;
   font-size: 1.2rem;
-  -webkit-text-fill-color: var(--blaze-orange);
-  color: var(--blaze-orange);
+  -webkit-text-fill-color: var(--studio);
+  color: var(--studio);
   text-align: center;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -67,23 +67,8 @@
 }
 
 .main-record--definition.filled {
-  border: 2px solid var(--blaze-orange);
+  border: 2px solid var(--studio);
   cursor: grab;
-}
-
-.multiple-match-mode-page--check-result {
-  padding: 0.3rem 1.2rem;
-  border: 2px solid var(--soft-peach);
-  border-radius: 10rem;
-  background-color: var(--blaze-orange);
-  font-size: 1.2rem;
-  -webkit-text-fill-color: var(--soft-peach);
-  color: var(--soft-peach);
-  cursor: pointer;
-}
-
-.multiple-match-mode-page--check-result:hover {
-  letter-spacing: 0.2rem;
 }
 
 .multiple-match-mode-page--result {

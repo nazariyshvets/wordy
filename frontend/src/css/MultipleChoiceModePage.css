@@ -40,12 +40,12 @@
 
 .answer-button {
   padding: 0.4rem 1.2rem;
-  border: 2px solid var(--blaze-orange);
+  border: 2px solid var(--studio);
   border-radius: 10rem;
   background-color: transparent;
   font-size: 1.2rem;
-  -webkit-text-fill-color: var(--blaze-orange);
-  color: var(--blaze-orange);
+  -webkit-text-fill-color: var(--studio);
+  color: var(--studio);
   text-overflow: ellipsis;
   white-space: nowrap;
   overflow: hidden;

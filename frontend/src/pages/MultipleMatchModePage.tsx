@@ -4,6 +4,7 @@ import { DndProvider, useDrag, useDrop } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { TouchBackend } from "react-dnd-touch-backend";
 import RestartButton from "../components/RestartButton";
+import FoldedButton from "components/FoldedButton";
 import useDocumentTitle from "../hooks/useDocumentTitle";
 import useTr from "../hooks/useTr";
 import { MultipleMatchModePageTr } from "../translations/pagesTr";
@@ -257,15 +258,13 @@ function MultipleMatchModePage() {
             </div>
           </DndProvider>
 
-          <button
-            className="multiple-match-mode-page--check-result"
+          <FoldedButton
+            text={MultipleMatchModePageTr.checkResult[langCode]}
             onClick={() => {
               setResult(correctAnswersQuantity());
               setIsEnd(true);
             }}
-          >
-            {MultipleMatchModePageTr.checkResult[langCode]}
-          </button>
+          />
         </>
       )}
     </div>
