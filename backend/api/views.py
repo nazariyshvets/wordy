@@ -78,18 +78,17 @@ def create_word_set(request):
   words_data = request.data.get("words", [])
 
   word_set_serializer = WordSetSerializer(data=word_set_data)
-  word_serializers = [WordSerializer(data=word_data)
-                      for word_data in words_data]
+  word_serializer = WordSerializer(data=words_data, many=True)
 
-  if word_set_serializer.is_valid() and all(ws.is_valid() for ws in word_serializers):
+  if word_set_serializer.is_valid() and word_serializer.is_valid():
     word_set = word_set_serializer.save(creator=request.user)
 
     # Prepare word instances to be created
     words_to_create = [
-        Word(term=word_serializer.validated_data["term"],
-             definition=word_serializer.validated_data["definition"],
+        Word(term=word_data["term"],
+             definition=word_data["definition"],
              word_set=word_set)
-        for word_serializer in word_serializers
+        for word_data in word_serializer.validated_data
     ]
 
     Word.objects.bulk_create(words_to_create)  # Bulk create words
@@ -98,7 +97,7 @@ def create_word_set(request):
 
   errors = {
       "word_set": word_set_serializer.errors,
-      "words": [ws.errors for ws in word_serializers if not ws.is_valid()]
+      "words": word_serializer.errors
   }
   return Response(errors, status=status.HTTP_400_BAD_REQUEST)
 
@@ -107,17 +106,21 @@ def create_word_set(request):
 @permission_classes([IsAuthenticated])
 def update_word_set(request, pk):
   word_set = get_object_or_404(WordSet, pk=pk, creator=request.user)
+  words_data = request.data.get("words", [])
 
   word_set_serializer = WordSetSerializer(
       instance=word_set, data=request.data.get("word_set"), partial=True
   )
+  word_serializer = WordSerializer(data=words_data, many=True)
 
   if not word_set_serializer.is_valid():
     return Response(word_set_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-
-  words_data = request.data.get("words", [])
+  if not word_serializer.is_valid():
+    return Response(word_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
   with transaction.atomic():
+    # Update word set
+    word_set_serializer.save()
     # Update existing words if they exist in words_data
     existing_word_ids = [word['id'] for word in words_data if 'id' in word]
     existing_words = Word.objects.filter(
