@@ -29,32 +29,34 @@ function WordSetPage() {
   useEffect(() => {
     const controller = new AbortController();
 
-    api
-      .get(`/word-sets/${wordSetId}/`, { signal: controller.signal })
-      .then((response) =>
-        setRecords(
-          response.data.words.map(
-            ({ id, term, definition }: ApiWordRecord) => ({
-              id: id.toString(),
-              term,
-              definition,
-            })
+    if (records.length === 0) {
+      api
+        .get(`/word-sets/${wordSetId}/`, { signal: controller.signal })
+        .then((response) =>
+          setRecords(
+            response.data.words.map(
+              ({ id, term, definition }: ApiWordRecord) => ({
+                id: id.toString(),
+                term,
+                definition,
+              })
+            )
           )
         )
-      )
-      .catch((error) => {
-        console.error(error);
+        .catch((error) => {
+          console.error(error);
 
-        if (error.code !== "ERR_CANCELED") {
-          navigate("/word-sets");
-        }
-      })
-      .finally(() => setIsLoading(false));
+          if (error.code !== "ERR_CANCELED") {
+            navigate("/word-sets");
+          }
+        })
+        .finally(() => setIsLoading(false));
+    }
 
     return () => {
       controller.abort();
     };
-  }, [api, wordSetId, navigate]);
+  }, [api, wordSetId, navigate, records]);
 
   useEffect(() => {
     setIsMenuActive(false);

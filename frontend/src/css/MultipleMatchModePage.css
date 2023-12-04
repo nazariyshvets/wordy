@@ -3,7 +3,7 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  row-gap: 1rem;
+  row-gap: 2rem;
   padding: 2rem;
   border-radius: 1rem;
   background-color: var(--soft-peach);
@@ -33,6 +33,12 @@
 
 .topbar-record {
   cursor: grab;
+}
+
+.main-record--term {
+  background-color: var(--studio);
+  -webkit-text-fill-color: var(--soft-peach);
+  color: var(--soft-peach);
 }
 
 .topbar-record:active,
