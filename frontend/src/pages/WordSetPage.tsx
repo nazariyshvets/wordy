@@ -3,6 +3,7 @@ import { Link, Outlet, useParams, useNavigate } from "react-router-dom";
 import Loading from "react-loading";
 import Confetti from "react-confetti";
 import { useWindowWidth } from "@react-hook/window-size";
+import shuffle from "shuffle-array";
 import HamburgerMenu from "../components/HamburgerMenu";
 import useAxios from "../hooks/useAxios";
 import useTr from "../hooks/useTr";
@@ -60,6 +61,10 @@ function WordSetPage() {
 
   useEffect(() => {
     setIsMenuActive(false);
+  }, [currentModeId]);
+
+  useEffect(() => {
+    setRecords((prevRecords) => shuffle([...prevRecords]));
   }, [currentModeId]);
 
   useEffect(() => {
