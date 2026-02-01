@@ -1,3 +1,3 @@
-const BASE_SERVER_URL = "http://localhost:8000";
+const BASE_SERVER_URL = "https://nazariishvets.pythonanywhere.com/";
 
 export default BASE_SERVER_URL;
