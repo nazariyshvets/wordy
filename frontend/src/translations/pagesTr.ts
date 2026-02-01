@@ -80,6 +80,47 @@ const CreateUpdateWordSetPageTr = {
     "pt-PT": "Algo deu errado. Por favor, tente novamente.",
     "pl-PL": "Coś poszło nie tak. Proszę spróbować ponownie.",
   },
+  leaveConfirmTitle: {
+    "uk-UA": "Залишити сторінку?",
+    "en-GB": "Leave page?",
+    "de-DE": "Seite verlassen?",
+    "fr-FR": "Quitter la page ?",
+    "es-ES": "¿Salir de la página?",
+    "pt-PT": "Sair da página?",
+    "pl-PL": "Opuścić stronę?",
+  },
+  leaveConfirmMessage: {
+    "uk-UA":
+      "У вас є незбережені зміни. Якщо ви залишите сторінку, вони будуть втрачені.",
+    "en-GB":
+      "You have unsaved changes. If you leave, your changes will be lost.",
+    "de-DE":
+      "Sie haben ungespeicherte Änderungen. Wenn Sie die Seite verlassen, gehen diese verloren.",
+    "fr-FR":
+      "Vous avez des modifications non enregistrées. Si vous quittez, elles seront perdues.",
+    "es-ES": "Tienes cambios sin guardar. Si sales, se perderán.",
+    "pt-PT": "Tem alterações não guardadas. Se sair, serão perdidas.",
+    "pl-PL":
+      "Masz niezapisane zmiany. Jeśli opuścisz stronę, zostaną utracone.",
+  },
+  leaveConfirmLeave: {
+    "uk-UA": "Залишити",
+    "en-GB": "Leave",
+    "de-DE": "Verlassen",
+    "fr-FR": "Quitter",
+    "es-ES": "Salir",
+    "pt-PT": "Sair",
+    "pl-PL": "Opuść",
+  },
+  leaveConfirmStay: {
+    "uk-UA": "Залишитися",
+    "en-GB": "Stay",
+    "de-DE": "Bleiben",
+    "fr-FR": "Rester",
+    "es-ES": "Quedarse",
+    "pt-PT": "Ficar",
+    "pl-PL": "Zostań",
+  },
 };
 
 const DeleteWordSetPageTr = {

@@ -29,6 +29,8 @@
     "react-speech-kit": "^3.0.1",
     "react-transition-group": "^4.4.5",
     "request": "^2.88.2",
+    "shuffle-array": "^1.0.1",
+    "tslib": "^2.8.1",
     "typescript": "^5.2.2",
     "web-vitals": "^2.1.4"
   },
@@ -58,6 +60,8 @@
   },
   "devDependencies": {
     "@types/react-alert": "^7.0.2",
+    "@types/react-transition-group": "^4.4.12",
+    "@types/shuffle-array": "^1.0.5",
     "eslint": "^8.48.0",
     "eslint-plugin-react": "^7.33.2"
   }

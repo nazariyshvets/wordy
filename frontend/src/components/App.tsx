@@ -1,4 +1,9 @@
-import { Route, BrowserRouter, Routes, Navigate } from "react-router-dom";
+import {
+  createBrowserRouter,
+  Navigate,
+  Outlet,
+  RouterProvider,
+} from "react-router-dom";
 import { AuthProvider } from "../contexts/AuthContext";
 import { TrProvider } from "../contexts/TrContext";
 import MODES from "../constants/MODES";
@@ -13,53 +18,60 @@ import DefaultModePage from "../pages/DefaultModePage";
 import DeleteWordSetPage from "../pages/DeleteWordSetPage";
 import PrivatePage from "../pages/PrivatePage";
 
-function App() {
-  return (
-    <BrowserRouter>
+const router = createBrowserRouter([
+  {
+    element: (
       <TrProvider>
         <AuthProvider>
-          <Routes>
-            <Route path="/" element={<WelcomePage />} />
-            <Route path="/registration" element={<RegistrationPage />} />
-            <Route path="/login" element={<LoginPage />} />
-            <Route
-              path="/word-sets"
-              element={
-                <PrivatePage>
-                  <MainPage />
-                </PrivatePage>
-              }
-            >
-              <Route index element={<HomePage />} />
-              <Route
-                path="create"
-                element={<CreateUpdateWordSetPage isCreating={true} />}
-              />
-              <Route path=":wordSetId" element={<WordSetPage />}>
-                <Route index element={<DefaultModePage />} />
-                {MODES.map((mode) => (
-                  <Route
-                    path={`${mode.id}`}
-                    element={mode.element}
-                    key={mode.id}
-                  />
-                ))}
-              </Route>
-              <Route
-                path=":wordSetId/update"
-                element={<CreateUpdateWordSetPage isCreating={false} />}
-              />
-              <Route path=":wordSetId/delete" element={<DeleteWordSetPage />} />
-            </Route>
-            <Route
-              path="*"
-              element={<Navigate to="/word-sets" replace={true} />}
-            />
-          </Routes>
+          <Outlet />
         </AuthProvider>
       </TrProvider>
-    </BrowserRouter>
-  );
+    ),
+    children: [
+      { path: "/", element: <WelcomePage /> },
+      { path: "/registration", element: <RegistrationPage /> },
+      { path: "/login", element: <LoginPage /> },
+      {
+        path: "/word-sets",
+        element: (
+          <PrivatePage>
+            <MainPage />
+          </PrivatePage>
+        ),
+        children: [
+          { index: true, element: <HomePage /> },
+          {
+            path: "create",
+            element: <CreateUpdateWordSetPage isCreating={true} />,
+          },
+          {
+            path: ":wordSetId",
+            element: <WordSetPage />,
+            children: [
+              { index: true, element: <DefaultModePage /> },
+              ...MODES.map((mode) => ({
+                path: mode.id,
+                element: mode.element,
+              })),
+            ],
+          },
+          {
+            path: ":wordSetId/update",
+            element: <CreateUpdateWordSetPage isCreating={false} />,
+          },
+          { path: ":wordSetId/delete", element: <DeleteWordSetPage /> },
+        ],
+      },
+      {
+        path: "*",
+        element: <Navigate to="/word-sets" replace />,
+      },
+    ],
+  },
+]);
+
+function App() {
+  return <RouterProvider router={router} />;
 }
 
 export default App;

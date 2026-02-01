@@ -1,8 +1,9 @@
-import { useState, useEffect, ChangeEvent, FormEvent } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useState, useEffect, useRef, useMemo, ChangeEvent, FormEvent } from "react";
+import { useParams, useNavigate, useBlocker } from "react-router-dom";
 import Loading from "react-loading";
 import { nanoid } from "nanoid";
 import { useAlert } from "react-alert";
+import LeaveConfirmModal from "../components/LeaveConfirmModal";
 import PageTitle from "../components/PageTitle";
 import SubmitButton from "../components/SubmitButton";
 import useAxios from "../hooks/useAxios";
@@ -13,6 +14,10 @@ import { CreateUpdateWordSetPageTr } from "../translations/pagesTr";
 import WordRecord from "interfaces/WordRecord.interface";
 import ApiWordRecord from "interfaces/ApiWordRecord.interface";
 import "../css/CreateUpdateWordSetPage.css";
+
+const recordsEqual = (a: WordRecord[], b: WordRecord[]): boolean =>
+  a.length === b.length &&
+  a.every((r, i) => r.term === b[i].term && r.definition === b[i].definition);
 
 interface TitleInputProps {
   title: string;
@@ -95,6 +100,44 @@ function CreateUpdateWordSetPage({ isCreating }: CreateUpdateWordSetPageProps) {
   const alert = useAlert();
   const api = useAxios();
   const navigate = useNavigate();
+  const allowNavigationRef = useRef(false);
+  const initialSnapshotRef = useRef<{
+    title: string;
+    existingRecords: WordRecord[];
+    newRecords: WordRecord[];
+  } | null>(null);
+
+  const hasUnsavedChanges = useMemo(() => {
+    if (isCreating) {
+      return (
+        title.trim() !== "" ||
+        newRecords.length > 1 ||
+        newRecords.some(
+          (r) => r.term.trim() !== "" || r.definition.trim() !== ""
+        )
+      );
+    }
+    const initial = initialSnapshotRef.current;
+    if (!initial) return false;
+    return (
+      title !== initial.title ||
+      !recordsEqual(existingRecords, initial.existingRecords) ||
+      !recordsEqual(newRecords, initial.newRecords)
+    );
+  }, [isCreating, title, existingRecords, newRecords]);
+
+  const shouldBlockNavigation = hasUnsavedChanges && !allowNavigationRef.current;
+  const blocker = useBlocker(shouldBlockNavigation);
+
+  useEffect(() => {
+    const handleBeforeUnload = (e: BeforeUnloadEvent) => {
+      if (hasUnsavedChanges) {
+        e.preventDefault();
+      }
+    };
+    window.addEventListener("beforeunload", handleBeforeUnload);
+    return () => window.removeEventListener("beforeunload", handleBeforeUnload);
+  }, [hasUnsavedChanges]);
 
   useDocumentTitle(
     isCreating
@@ -180,6 +223,7 @@ function CreateUpdateWordSetPage({ isCreating }: CreateUpdateWordSetPageProps) {
             ? CreateUpdateWordSetPageTr.created[langCode]
             : CreateUpdateWordSetPageTr.updated[langCode]
         );
+        allowNavigationRef.current = true;
         isCreating
           ? navigate("/word-sets/")
           : navigate(`/word-sets/${wordSetId}`);
@@ -200,16 +244,21 @@ function CreateUpdateWordSetPage({ isCreating }: CreateUpdateWordSetPageProps) {
       api
         .get(`/word-sets/${wordSetId}/`, { signal: controller.signal })
         .then((response) => {
-          setTitle(response.data.word_set.title);
-          setExistingRecords(
-            response.data.words.map(
-              ({ id, term, definition }: ApiWordRecord) => ({
-                id: id.toString(),
-                term,
-                definition,
-              })
-            )
+          const loadedTitle = response.data.word_set.title;
+          const loadedRecords = response.data.words.map(
+            ({ id, term, definition }: ApiWordRecord) => ({
+              id: id.toString(),
+              term,
+              definition,
+            })
           );
+          setTitle(loadedTitle);
+          setExistingRecords(loadedRecords);
+          initialSnapshotRef.current = {
+            title: loadedTitle,
+            existingRecords: loadedRecords,
+            newRecords: [],
+          };
         })
         .catch((error) => {
           console.error(error);
@@ -239,6 +288,15 @@ function CreateUpdateWordSetPage({ isCreating }: CreateUpdateWordSetPageProps) {
 
   return (
     <div className="create-update-word-set-page">
+      <LeaveConfirmModal
+        isOpen={blocker.state === "blocked"}
+        title={CreateUpdateWordSetPageTr.leaveConfirmTitle[langCode]}
+        message={CreateUpdateWordSetPageTr.leaveConfirmMessage[langCode]}
+        leaveText={CreateUpdateWordSetPageTr.leaveConfirmLeave[langCode]}
+        stayText={CreateUpdateWordSetPageTr.leaveConfirmStay[langCode]}
+        onLeave={() => blocker.proceed?.()}
+        onStay={() => blocker.reset?.()}
+      />
       <PageTitle
         text={
           isCreating
